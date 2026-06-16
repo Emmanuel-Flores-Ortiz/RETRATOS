@@ -56,9 +56,26 @@ public class ControlPersonaje : MonoBehaviour
         moveY = ctx.ReadValue<Vector2>().y;
     }
 
+    void flip()
+    {
+        if (rb2D.linearVelocity.x > 0.1f)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (rb2D.linearVelocity.x < -0.1f)
+        {
+            spriteRenderer.flipX = true;
+        }
+    }
+    
     private void FixedUpdate()
     {
         rb2D.linearVelocityX = moveX * speed;
+        animator.SetFloat("Vx", Mathf.Abs(rb2D.linearVelocityX));
+        flip();
         rb2D.linearVelocityY = moveY * speed;
+        animator.SetFloat("Vy", rb2D.linearVelocityY);
+        flip();
     }
+    
 }
