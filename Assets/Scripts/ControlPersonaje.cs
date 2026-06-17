@@ -4,11 +4,11 @@ using UnityEngine.InputSystem;
 
 public class ControlPersonaje : MonoBehaviour
 {
-    //VARIABLES
+    //VARIABLES DE MOVIMIENTO
     public float speed;
-
     private float moveX;
     private float moveY;
+    
     
     //VARIABLES TIPO ESTRUCTURAS
     Rigidbody2D rb2D;     
@@ -24,6 +24,7 @@ public class ControlPersonaje : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
     
+    //LOGICA RELACIONADA CON LAS ACCIONES DEL JUGADOR (CAMINAR, INTERACTUAR)
     void OnEnable()
     {
         acciones.Player.Enable();
@@ -76,6 +77,6 @@ public class ControlPersonaje : MonoBehaviour
         rb2D.linearVelocityY = moveY * speed;
         animator.SetFloat("Vy", rb2D.linearVelocityY);
         flip();
+        
     }
-    
 }
