@@ -2,14 +2,14 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
 
-public class ObjetosInteractuables : MonoBehaviour
+public class DialogosNPC : MonoBehaviour
 {
     //VARIABLES DE DETECCION DEL PERSONAJE
     private bool jugadorEnRango;
     
     
     //VARIABLES RELACIONADAS CON LOS DIALOGOS
-    [SerializeField,TextArea(4,6)] private string[] parrafos;  //Indica la cantidad de parrafos que tendra el objeto (estos se escriben y crean desde el inspector).
+    [SerializeField,TextArea(4,6)] public string[] parrafos;  //Indica la cantidad de parrafos que tendra el objeto (estos se escriben y crean desde el inspector).
 
     private bool dialogoIniciado;                              //Si es 1 --> Indica que el dialogo con el objeto se esta realizando.
 
@@ -46,7 +46,7 @@ public class ObjetosInteractuables : MonoBehaviour
     
     //------------------------------LOGICA RELACIONADA CON DIALOGOS------------------------------
     //Interacion recibe un argumento el cual es el boton asigando anteriormente, de ser el correcto, realiza lo que tiene adentro.
-    void interaccion(InputAction.CallbackContext ctx)           
+    public void interaccion(InputAction.CallbackContext ctx)           
     {
         if (jugadorEnRango)                                     //Detecta si el jugador esta en el rango del objeto.
         {
@@ -70,7 +70,7 @@ public class ObjetosInteractuables : MonoBehaviour
     
     
     //Iniciamos el dialogo al interactuar con el objeto
-    private void InicioDeDialogo()
+    public void InicioDeDialogo()
     {
         Time.timeScale = 0f;                                //Detiene el tiempo en el juego de cualquier cosa incluido el jugador, asique ya se no se puede mover mas
         ParrafoMostrado = 0;
