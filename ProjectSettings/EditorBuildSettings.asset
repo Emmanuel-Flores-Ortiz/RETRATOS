@@ -5,9 +5,33 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Menu/Menu.unity
+    guid: 7c5488ab846e75243ae2a6b8a9aa629c
+  - enabled: 1
+    path: Assets/Scenes/CasaPrincipal/Casa.unity
+    guid: 9edf6fc8f82741549b7356868b5c4d97
+  - enabled: 1
+    path: Assets/Scenes/CasaPrincipal/PartesDeCasa/Pasillo.unity
+    guid: bd009aa574ee0c148acea2d83aed68e0
+  - enabled: 1
+    path: Assets/Scenes/RecuerdoNavidad/Navidad.unity
+    guid: e58a164700d656540baf72e4e4932120
+  - enabled: 1
+    path: Assets/Scenes/RecuerdoGuitarra/Guitarra.unity
+    guid: f57876f8e7adc514caae5c896fac50b3
+  - enabled: 1
+    path: Assets/Scenes/RecuerdoPatio/Patio.unity
+    guid: 2146a5f12952cac488419662688928af
+  - enabled: 1
+    path: Assets/Scenes/RecuerdoGraduacion/Graduacion.unity
+    guid: 601e2747cef0f804eb38c7552c87d140
+  - enabled: 1
+    path: Assets/Scenes/RecuerdoCocina/Cocicna.unity
+    guid: 5e9e8d1997676124ab15379ec9bfc0d2
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

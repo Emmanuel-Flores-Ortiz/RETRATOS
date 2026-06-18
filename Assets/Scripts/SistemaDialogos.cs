@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
 
-public class DialogosNPC : MonoBehaviour
+public class SistemaDialogos : MonoBehaviour
 {
     //VARIABLES DE DETECCION DEL PERSONAJE
     private bool jugadorEnRango;

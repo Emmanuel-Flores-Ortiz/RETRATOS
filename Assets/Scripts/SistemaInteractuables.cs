@@ -1,11 +1,12 @@
 using UnityEngine;
 using System.Collections;
 
-public class ObjetosColeccionables : MonoBehaviour
+
+public class SistemaInteractuables : MonoBehaviour
 {
-    //VARIABLES DE LOS OBJETOS
-    public enum TipoObjeto {camara, NPC}
-    public bool tomarObjeto;
+    public enum TipoObjeto {camara}
+    //--VARIABLES DE LOS OBJETOS--
+    //CAMARA
     [SerializeField, TextArea(4,6)] private string[] parrafosCamaras;
     int parrafoMostradoCamara;
     
@@ -14,7 +15,7 @@ public class ObjetosColeccionables : MonoBehaviour
     private Collider2D coll;
     [SerializeField] private TipoObjeto tipoObjeto;
     private CanvaDirector director;
-    private DialogosNPC sistemaDeDialogos;
+    private SistemaDialogos sistemaDeDialogos;
     
     
     //INICIALIZO TODAS MIS VARIABLES QUE USARE EN TODO MOMENTO
@@ -22,7 +23,7 @@ public class ObjetosColeccionables : MonoBehaviour
     {
         coll = GetComponent<Collider2D>();
         director = FindFirstObjectByType<CanvaDirector>();
-        sistemaDeDialogos = FindFirstObjectByType<DialogosNPC>();
+        sistemaDeDialogos = FindFirstObjectByType<SistemaDialogos>();
     }
     
     
@@ -38,19 +39,17 @@ public class ObjetosColeccionables : MonoBehaviour
                 director.AumentoCamara();
                 parrafoMostradoCamara = director.camara - 1;
                 sistemaDeDialogos.parrafos = parrafosCamaras;
-            
-                if (parrafoMostradoCamara >= 0 && parrafoMostradoCamara < sistemaDeDialogos.parrafos.Length)
-                {
-                    sistemaDeDialogos.ParrafoMostrado = parrafoMostradoCamara;
-                    sistemaDeDialogos.InicioDeDialogo();
-                    Debug.Log("Se inicia el sistema de accion del dialogo");
-                    yield return new WaitForSecondsRealtime(3f);
-                    Debug.Log("Pasaron los 5 segundos");
+                
+                sistemaDeDialogos.ParrafoMostrado = parrafoMostradoCamara;
+                sistemaDeDialogos.InicioDeDialogo();
+                Debug.Log("Se inicia el sistema de accion del dialogo");
+                yield return new WaitForSecondsRealtime(3f);
+                Debug.Log("Pasaron los 3 segundos");
 
-                    sistemaDeDialogos.dialogoIniciado = false;      //El dialogo se desactiva (0)
-                    director.panelDeDialogos.SetActive(false);      //El panel se desactiva tambiem
-                    Time.timeScale = 1f;
-                }
+                sistemaDeDialogos.dialogoIniciado = false;      //El dialogo se desactiva (0)
+                director.panelDeDialogos.SetActive(false);      //El panel se desactiva tambiem
+                Time.timeScale = 1f;
+                
                 Destroy(gameObject);
                 Debug.Log("Se borro el objeto");
 
@@ -70,14 +69,6 @@ public class ObjetosColeccionables : MonoBehaviour
     }
     
     
-    //NPC
-    void eventosNPC()
-    {
-        coll.enabled = false;
-        Debug.Log("NPC destruido");
-        Destroy(gameObject);
-    }
-    
     
     //ONTRIGGER
     private void OnTriggerEnter2D(Collider2D other)
@@ -88,9 +79,6 @@ public class ObjetosColeccionables : MonoBehaviour
             {
                 case TipoObjeto.camara:
                     StartCoroutine(eventosCamara());
-                    break;
-                case TipoObjeto.NPC:
-                    eventosNPC();
                     break;
             }
         }
