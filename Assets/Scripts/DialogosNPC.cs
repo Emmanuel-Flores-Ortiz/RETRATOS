@@ -11,9 +11,9 @@ public class DialogosNPC : MonoBehaviour
     //VARIABLES RELACIONADAS CON LOS DIALOGOS
     [SerializeField,TextArea(4,6)] public string[] parrafos;  //Indica la cantidad de parrafos que tendra el objeto (estos se escriben y crean desde el inspector).
 
-    private bool dialogoIniciado;                              //Si es 1 --> Indica que el dialogo con el objeto se esta realizando.
+    public bool dialogoIniciado;                              //Si es 1 --> Indica que el dialogo con el objeto se esta realizando.
 
-    private int ParrafoMostrado;                           //Indica el parrafo que se esta reproduciendo en ese momento (se pueden ver desde el inspector)
+    public int ParrafoMostrado;                           //Indica el parrafo que se esta reproduciendo en ese momento (se pueden ver desde el inspector)
     
     
     //VARIABLES TIPO ESTRUCTURA
