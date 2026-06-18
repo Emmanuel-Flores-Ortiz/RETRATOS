@@ -7,6 +7,7 @@ public class ObjetosColeccionables : MonoBehaviour
     public enum TipoObjeto {camara, NPC}
     public bool tomarObjeto;
     [SerializeField, TextArea(4,6)] private string[] parrafosCamaras;
+    int parrafoMostradoCamara;
     
     
     //VARIABLES TIPO ESTRUCTURA
@@ -35,9 +36,8 @@ public class ObjetosColeccionables : MonoBehaviour
             {
                 coll.enabled = false;
                 director.AumentoCamara();
-            
+                parrafoMostradoCamara = director.camara - 1;
                 sistemaDeDialogos.parrafos = parrafosCamaras;
-                int parrafoMostradoCamara = director.camara - 1;
             
                 if (parrafoMostradoCamara >= 0 && parrafoMostradoCamara < sistemaDeDialogos.parrafos.Length)
                 {
