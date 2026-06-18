@@ -8,8 +8,6 @@ public class SistemaInteractuables : MonoBehaviour
     //--VARIABLES DE LOS OBJETOS--
     //CAMARA
     [SerializeField, TextArea(4,6)] private string[] parrafosCamaras;
-    int parrafoMostradoCamara;
-    
     
     //VARIABLES TIPO ESTRUCTURA
     private Collider2D coll;
@@ -37,10 +35,9 @@ public class SistemaInteractuables : MonoBehaviour
             {
                 coll.enabled = false;
                 director.AumentoCamara();
-                parrafoMostradoCamara = director.camara - 1;
                 sistemaDeDialogos.parrafos = parrafosCamaras;
+                sistemaDeDialogos.ParrafoMostrado = 0;
                 
-                sistemaDeDialogos.ParrafoMostrado = parrafoMostradoCamara;
                 sistemaDeDialogos.InicioDeDialogo();
                 Debug.Log("Se inicia el sistema de accion del dialogo");
                 yield return new WaitForSecondsRealtime(3f);

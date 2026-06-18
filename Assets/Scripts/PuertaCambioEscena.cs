@@ -22,12 +22,19 @@ public class PuertaCambioEscena : MonoBehaviour
     
     void OnEnable()                                             
     { 
-        sistemaDeDialogos.acciones.Player.Interaccion.performed += eventosPuerta;   
+        // ¡El escudo protector! Solo nos suscribimos si de verdad existen las referencias
+        if (sistemaDeDialogos != null && sistemaDeDialogos.acciones != null)
+        {
+            sistemaDeDialogos.acciones.Player.Interaccion.performed += eventosPuerta;   
+        }
     }
-    
+
     void OnDisable()                                        
     {
-        sistemaDeDialogos.acciones.Player.Interaccion.performed -= eventosPuerta;                         
+        if (sistemaDeDialogos != null && sistemaDeDialogos.acciones != null)
+        {
+            sistemaDeDialogos.acciones.Player.Interaccion.performed -= eventosPuerta;                         
+        }
     }
     
     //PUERTA

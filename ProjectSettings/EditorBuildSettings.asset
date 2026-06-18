@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/CasaPrincipal/Casa.unity
     guid: 9edf6fc8f82741549b7356868b5c4d97
   - enabled: 1
-    path: Assets/Scenes/CasaPrincipal/PartesDeCasa/Pasillo.unity
+    path: Assets/Scenes/CasaPrincipal/Pasillo.unity
     guid: bd009aa574ee0c148acea2d83aed68e0
   - enabled: 1
     path: Assets/Scenes/RecuerdoNavidad/Navidad.unity
