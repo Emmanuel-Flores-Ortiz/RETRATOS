@@ -18,7 +18,7 @@ public class SistemaInteractuables : MonoBehaviour
     
     //INICIALIZO TODAS MIS VARIABLES QUE USARE EN TODO MOMENTO
     private void Awake()
-    {
+    { 
         coll = GetComponent<Collider2D>();
         director = FindFirstObjectByType<CanvaDirector>();
         sistemaDeDialogos = FindFirstObjectByType<SistemaDialogos>();
@@ -64,7 +64,6 @@ public class SistemaInteractuables : MonoBehaviour
             Debug.LogError("No se pudo iniciar el evento porque CanvaDirector o DialogosNPC son nulos.");
         }
     }
-    
     
     
     //ONTRIGGER
