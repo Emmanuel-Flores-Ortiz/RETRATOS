@@ -16,27 +16,23 @@ public class PuertaCambioEscena : MonoBehaviour
     private SistemaDialogos sistemaDeDialogos;
     private CambioEscenas cambioEscenas;
     
-    void Awake()                                                
+    void Start()                                                
     {
         animator = GetComponent<Animator>();
         sistemaDeDialogos = FindFirstObjectByType<SistemaDialogos>();
         cambioEscenas = FindFirstObjectByType<CambioEscenas>();
-    }
-    
-    void OnEnable()                                             
-    { 
-        // ¡El escudo protector! Solo nos suscribimos si de verdad existen las referencias
-        if (sistemaDeDialogos != null && sistemaDeDialogos.acciones != null)
-        {
-            sistemaDeDialogos.acciones.Player.Interaccion.performed += eventosPuerta;   
-        }
-    }
 
-    void OnDisable()                                        
-    {
+        // Forzamos la suscripción aquí en el Start
         if (sistemaDeDialogos != null && sistemaDeDialogos.acciones != null)
         {
-            sistemaDeDialogos.acciones.Player.Interaccion.performed -= eventosPuerta;                         
+            // Limpiamos suscripciones viejas por si acaso y nos conectamos
+            sistemaDeDialogos.acciones.Player.Interaccion.performed -= eventosPuerta;   
+            sistemaDeDialogos.acciones.Player.Interaccion.performed += eventosPuerta;   
+            Debug.Log($"[PUERTA] {gameObject.name} se conectó con éxito al Input System.");
+        }
+        else
+        {
+            Debug.LogError($"[PUERTA] {gameObject.name} NO encontró el SistemaDialogos en la escena. El Space no funcionará aquí.");
         }
     }
     
@@ -80,6 +76,7 @@ public class PuertaCambioEscena : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             jugadorEnRangoPuerta = true;
+            Debug.Log("En rango");
         }
     }
     
@@ -88,6 +85,7 @@ public class PuertaCambioEscena : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             jugadorEnRangoPuerta = false;
+            Debug.Log("Fuera de rango");
         }
     }
 }
